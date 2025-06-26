@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    container_name: cuber-pg
+    restart: unless-stopped
+    ports:
+      - "5432:5432"               # 本机 5432 → 容器 5432
+    environment:
+      POSTGRES_USER: postgres     # ← 和连接串保持一致
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cuber
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
